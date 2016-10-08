@@ -101,12 +101,13 @@
 
 	  <div id="chatbox">
 				<p id="testBox"></p>
+				<p id="secondTest"></p>
 		</div>
 
-	  <form name="message" action="">
-      <input name="usermsg" type="text" id="usermsg" size="63" />
-      <input id="testSubmit" name="submitmsg" type="submit"  id="submitmsg" value="Send" onclick="postMessage()" />
-	  </form>
+
+    <input name="usermsg" type="text" id="usermsg" size="60" />
+    <input name="submitmsg" type="submit"  id="submitmsg" value="Send" onclick="postMessage()" />
+
 	</div>
 
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
@@ -134,10 +135,11 @@
 	realDb.on('value', snap => chatBox.innerText = snap.val());
 
 	function postMessage(){
-		var text = document.getElementById("testSubmit");
-		firebase.database().ref().child()({
+		var text = document.getElementById("usermsg").value;
+		firebase.database().ref().set({
     message: text
   });
+		//document.getElementById("secondTest").innerText = text;
 	}
 	</script>
 
