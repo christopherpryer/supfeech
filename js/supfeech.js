@@ -7,24 +7,50 @@ var config = {
   messagingSenderId: "355684958639"
   };
 firebase.initializeApp(config);
+populateChat();
 
-//static set for first message in chatbox
+//function for writing data to firebase database
+function postMessage(){
+  //sets new branch to chat and adds message with newText value
+  var newText = document.getElementById('usermsg').value;
+  var countRef = firebase.database().ref('counter/');
+  var counter = 0;
+  countRef.on('value', function(snapshot) {
+      counter = snapshot.val();
+  });
+  var newCounter = counter + 1;
+  countRef.set(newCounter);
+  firebase.database().ref('chat').child(newCounter).set(newText);
+  populateChat();
+}
+
+function populateChat(){
+  var countRef = firebase.database().ref('counter/');
+  var counter = 0;
+  countRef.on('value', function(snapshot) {
+      counter = snapshot.val();
+  });
+
+  //for testing -- need to research reading json from firebase
+  for (var i = 0; i <= counter; i++) {
+      //beware of type conversion
+      var textHolder = String('text' + i);
+      var text = document.getElementById(textHolder);
+      var chatDb = firebase.database().ref('chat').child(i);
+      chatDb.on('value', snap => text.innerText = snap.val());
+  }
+}
+
+/*
 var text0 = document.getElementById('text0');
 var realDb0 = firebase.database().ref('chat').child(0);
 realDb0.on('value', snap => text0.innerText = snap.val());
 
-//function for writing data to firebase database
-function postMessage(){
-  //sets new branch to chat and adds message1 with newText value
-  var oldText = document.getElementById('text0').innerText;
-  var newText = document.getElementById('usermsg').value;
-  firebase.database().ref('chat').set({
-  0: oldText,
-  1: newText
-});
+var text1 = document.getElementById("text1");
+var realDb1 = firebase.database().ref('chat').child(1);
+realDb1.on('value', snap => text1.innerText = snap.val());
 
-  //inserts new message into second p element within chatbox (static)
-  var text1 = document.getElementById("text1");
-  var realDb1 = firebase.database().ref('chat').child(1);
-  realDb1.on('value', snap => text1.innerText = snap.val());
-}
+var text2 = document.getElementById("text2");
+var realDb2 = firebase.database().ref('chat').child(2);
+realDb2.on('value', snap => text2.innerText = snap.val());
+*/
