@@ -34,10 +34,10 @@ function populateChat(){
   //for testing -- need to research reading json from firebase
   for (var i = 0; i <= counter; i++) {
       //beware of type conversion
-      var textHolder = String('text' + i);
+      var textHolder = 'text' + i;
       var text = document.getElementById(textHolder);
-      var chatDb = firebase.database().ref('chat').child(i);
-      chatDb.on('value', snap => text.innerText = snap.val());
+      var chatRef = firebase.database().ref('chat').child(i);
+      chatRef.on('value', snap => text.innerText = snap.val());
   }
 }
 
