@@ -100,8 +100,8 @@
 	  </div>
 
 	  <div id="chatbox">
-				<p id="testBox"></p>
-				<p id="secondTest"></p>
+			<p id="text0"></p>
+			<p id="text1"></p>
 		</div>
 
 
@@ -130,15 +130,18 @@
 		};
 	firebase.initializeApp(config);
 
-	var chatBox = document.getElementById("testBox");
-	var realDb = firebase.database().ref().child('message');
-	realDb.on('value', snap => chatBox.innerText = snap.val());
+	var text0 = document.getElementById("text0");
+	var realDb0 = firebase.database().ref().child('message');
+	realDb0.on('value', snap => text0.innerText = snap.val());
 
 	function postMessage(){
-		var text = document.getElementById("usermsg").value;
-		firebase.database().ref().set({
-    message: text
-  });
+		var newText = document.getElementById("usermsg").value;
+		firebase.database().ref('chat').set({
+		message1: newText
+	})
+		var text1 = document.getElementById("text1");
+		var realDb1 = firebase.database().ref('chat').child('message1');
+		realDb1.on('value', snap => text1.innerText = snap.val());
 		//document.getElementById("secondTest").innerText = text;
 	}
 	</script>
