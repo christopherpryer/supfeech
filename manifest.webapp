@@ -1,0 +1,22 @@
+{
+  "version": "1.0.0",
+  "name": "supfeech",
+  "launch_path": "/index.html",
+  "description": "Chat with friends using Firebase 2.0",
+  "developer": {
+    "name": "chris pryer",
+    "url": ""
+  },
+  "installs_allowed_from": [
+    "*"
+  ],
+  "default_locale": "en",
+  "permissions": {
+  },
+  "locales": {
+    "en": {
+      "name": "supfeech",
+      "description": "Chat with friends using Firebase 2.0"
+    }
+  }
+}

@@ -1,2 +1,5 @@
-# supfeech
-This is the initial stage of supfeech. Basic HTML and design will be tied to a firebase project. Login will utilize anonymous authentication through firebase's api. The chat feed will be tied to a real time database. Any other functionality will most likely be developed in future versions.
+# Firebase: Build a Real Time Web Chat App Codelab - Start code
+
+This folder contains the starting code for the [Firebase: Build a Real Time Web Chat App Codelab](https://codelabs.developers.google.com/codelabs/firebase-web/).
+
+If you'd like to jump directly to the end and see the finished code head to the [web](../web) directory.

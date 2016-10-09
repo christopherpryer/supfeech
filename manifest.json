@@ -1,0 +1,7 @@
+{
+  "name": "supfeech",
+  "short_name": "supfeech",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "orientation": "portrait"
+}
