@@ -137,6 +137,12 @@ SupFeech.prototype.toggleButton = function() {
   }
 };
 
+// Resets the given MaterialTextField.
+SupFeech.resetMaterialTextfield = function(element) {
+  element.value = '';
+  element.parentNode.MaterialTextfield.boundUpdateClassesHandler();
+};
+
 // Checks that the Firebase SDK has been correctly setup and configured.
 SupFeech.prototype.checkSetup = function() {
   if (!window.firebase || !(firebase.app instanceof Function) || !window.config) {
@@ -220,9 +226,4 @@ SupFeech.prototype.checkSignedInWithMessage = function() {
   return false;
 };
 
-// Resets the given MaterialTextField.
-SupFeech.resetMaterialTextfield = function(element) {
-  element.value = '';
-  element.parentNode.MaterialTextfield.boundUpdateClassesHandler();
-};
 */
