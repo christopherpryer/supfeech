@@ -58,6 +58,7 @@ SupFeech.prototype.loadMessages = function() {
   }.bind(this);
   this.messagesRef.limitToLast(100).on('child_added', setMessage);
   this.messagesRef.limitToLast(100).on('child_changed', setMessage);
+  this.messagesRef.limitToLast(100).on('child_removed', setMessage);
 };
 
 // Saves a new message on the Firebase DB.
